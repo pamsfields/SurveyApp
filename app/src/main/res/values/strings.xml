@@ -4,4 +4,6 @@
     <string name="no_button">No</string>
     <string name="question_text">Are you excited for Daylights Savings Time ending?</string>
     <string name="thanks_toast">Thank You!</string>
+    <string name="yes_count_text">Yes Counts: </string>
+    <string name="no_count_text">No Counts: </string>
 </resources>
