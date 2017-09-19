@@ -33,7 +33,7 @@ public class SurveyApp extends AppCompatActivity {
             public void onClick(View v) {
                 yesCount++;
                 Toast.makeText(SurveyApp.this, "Thank You!", Toast.LENGTH_SHORT).show();
-                yes_Counter.setText(+Integer.toString(yesCount));
+                yes_Counter.setText(yes_Counter+Integer.toString(yesCount));
             }
         });
         mNoButton = (Button) findViewById(R.id.no_button);
@@ -43,7 +43,7 @@ public class SurveyApp extends AppCompatActivity {
                 noCount++;
                 Toast.makeText(SurveyApp.this, "Thank You!", Toast.LENGTH_SHORT).show();
 
-                no_Counter.setText(++Integer.toString(noCount));
+                no_Counter.setText(no_Counter+Integer.toString(noCount));
             }
         });
     }
