@@ -6,4 +6,7 @@
     <string name="thanks_toast">Thank You!</string>
     <string name="yes_count_text">Yes Counts: </string>
     <string name="no_count_text">No Counts: </string>
+    <string name="reset_button_text">Reset</string>
+    <string name="continue_button_text">Continue</string>
+    <string name="results_button">See Results of the Survey</string>
 </resources>
