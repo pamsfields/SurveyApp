@@ -1,5 +1,6 @@
 package com.pam.surveyapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,20 +13,20 @@ public class SurveyApp extends AppCompatActivity {
 
     private Button mYesButton;
     private Button mNoButton;
-    private TextView mQuestionTextView;
+    private Button resultsButton;
+    private TextView QuestionTextView;
     private int yesCount=0;
     private int noCount=0;
-    private TextView no_Counter;
-    private TextView yes_Counter;
+    private String noCountString;
+    private String yesCountString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey_app);
 
-        mQuestionTextView= (TextView) findViewById(R.id.question_text_view);
-        yes_Counter= (TextView) findViewById(R.id.yes_Counter);
-        no_Counter= (TextView) findViewById(R.id.no_Counter);
+        QuestionTextView= (TextView) findViewById(R.id.question_text_view);
 
         mYesButton = (Button) findViewById(R.id.yes_button);
         mYesButton.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +34,7 @@ public class SurveyApp extends AppCompatActivity {
             public void onClick(View v) {
                 yesCount++;
                 Toast.makeText(SurveyApp.this, "Thank You!", Toast.LENGTH_SHORT).show();
-                yes_Counter.setText(yes_Counter+Integer.toString(yesCount));
+                yesCountString= "@string/yes_count_text"+yesCount;
             }
         });
         mNoButton = (Button) findViewById(R.id.no_button);
@@ -42,9 +43,18 @@ public class SurveyApp extends AppCompatActivity {
             public void onClick(View v) {
                 noCount++;
                 Toast.makeText(SurveyApp.this, "Thank You!", Toast.LENGTH_SHORT).show();
-
-                no_Counter.setText(no_Counter+Integer.toString(noCount));
+                noCountString= "@string/no_count_text"+noCount;
             }
         });
+        resultsButton=(Button)findViewById(R.id.results_button);
+        resultsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //Start ResultsActivity
+                Intent resultsIntent = new Intent(getApplicationContext(), ResultsActivity.class);
+                startActivityForResult(resultsIntent, RESULT_OK);
+                }
+        });
     }
+
 }
