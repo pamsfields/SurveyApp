@@ -14,11 +14,6 @@ public class ResultsActivity extends AppCompatActivity {
     private Button resetButton;
     private TextView no_Counter;
     private TextView yes_Counter;
-    private String yesCount;
-    private String noCount;
-    private String noCountString;
-    private String yesCountString;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +21,11 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
         Bundle bundle = getIntent().getExtras();
         final String noCountString = bundle.getString("noCountString");
+        final String yesCountString = bundle.getString("yesCountString");
 
         yes_Counter= (TextView) findViewById(R.id.yes_Counter);
-        yes_Counter.setText(yesCountString);
+        yes_Counter.setText( yesCountString);
+
         no_Counter= (TextView) findViewById(R.id.no_Counter);
         no_Counter.setText(noCountString);
 
