@@ -14,6 +14,7 @@ public class SurveyApp extends AppCompatActivity {
     private Button mYesButton;
     private Button mNoButton;
     private Button resultsButton;
+    private Button customButton;
     private TextView QuestionTextView;
     private int yesCount=0;
     private int noCount=0;
@@ -51,10 +52,18 @@ public class SurveyApp extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 //Start ResultsActivity
-                Intent resultsIntent = new Intent(getApplicationContext(), ResultsActivity.class);
-                startActivityForResult(resultsIntent, RESULT_OK);
-                }
+                Intent resultsIntent = new Intent(SurveyApp.this, ResultsActivity.class);
+                startActivity(resultsIntent);
+            }
+        });
+        customButton=(Button)findViewById(R.id.custom_button);
+        customButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //Start ResultsActivity
+                Intent resultsIntent = new Intent(SurveyApp.this, CustomQuestionsActivity.class);
+                startActivity(resultsIntent);
+            }
         });
     }
-
 }
