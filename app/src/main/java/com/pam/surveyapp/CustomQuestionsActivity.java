@@ -14,6 +14,7 @@ public class CustomQuestionsActivity extends AppCompatActivity {
     EditText customQuestion;
     EditText answer1;
     EditText answer2;
+    Bundle questionBundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,17 @@ public class CustomQuestionsActivity extends AppCompatActivity {
         confirmButton = (Button) findViewById(R.id.confirm_button);
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                setResult(SurveyApp.RESULT_OK);
+                public void onClick(View v) {
+                Intent confirmIntent = new Intent(CustomQuestionsActivity.this, SurveyApp.class);
+                confirmIntent.putExtras(questionBundle);
+                startActivity(confirmIntent);
+                String newQuestion = customQuestion.getText().toString();
+                String newAnswer1 = answer1.getText().toString();
+                String newAnswer2 = answer2.getText().toString();
+                //need to pass values into buttons/question text view in SurveyApp
+                questionBundle.putString("question", newQuestion);
+                questionBundle.putString("answer1", newAnswer1);
+                questionBundle.putString("answer2", newAnswer2);
             }
         });
         cancelButton = (Button) findViewById(R.id.cancel_button);
@@ -37,6 +47,9 @@ public class CustomQuestionsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent resetIntent = new Intent(getApplicationContext(), SurveyApp.class);
                 startActivity(resetIntent);
+                customQuestion.getText().clear();
+                answer1.getText().clear();
+                answer2.getText().clear();
                 finish();
 
             }

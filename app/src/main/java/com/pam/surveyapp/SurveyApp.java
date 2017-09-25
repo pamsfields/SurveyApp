@@ -9,18 +9,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class SurveyApp extends AppCompatActivity {
 
     private Button mYesButton;
     private Button mNoButton;
     private Button resultsButton;
     private Button customButton;
-    private TextView QuestionTextView;
+    protected TextView QuestionTextView;
     private int yesCount=0;
     private int noCount=0;
     private String noCountString;
     private String yesCountString;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,17 @@ public class SurveyApp extends AppCompatActivity {
                 //Start ResultsActivity
                 Intent resultsIntent = new Intent(SurveyApp.this, CustomQuestionsActivity.class);
                 startActivity(resultsIntent);
+                Bundle questionBundle = getIntent().getExtras();
+                SurveyApp.this.CustomQuestion();
             }
         });
     }
+    private void CustomQuestion(Bundle questionBundle);
+    Bundle questionBundle = getIntent().getExtras();
+    String questionText = Bundle.getString("question");
+    String answer1Text = Bundle.getString("answer1");
+    String answer2Text = Bundle.getString("answer2");
+    QuestionTextView.setText(questionText);
+    mYesButton.setText(answer1Text);
+    mNoButton.setText(answer2Text);
 }
