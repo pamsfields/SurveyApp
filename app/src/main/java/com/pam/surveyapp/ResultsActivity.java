@@ -19,9 +19,9 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        Bundle bundle = getIntent().getExtras();
-        final String noCountString = bundle.getString("noCountString");
-        final String yesCountString = bundle.getString("yesCountString");
+        Bundle resultsBundle = getIntent().getExtras();
+        final String noCountString = resultsBundle.getString("noCountString");
+        final String yesCountString = resultsBundle.getString("yesCountString");
 
         yes_Counter= (TextView) findViewById(R.id.yes_Counter);
         yes_Counter.setText( yesCountString);
@@ -33,18 +33,19 @@ public class ResultsActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(SurveyApp.RESULT_OK);
+                setResult(SurveyActivity.RESULT_CANCELED);
+                finish();
             }
         });
         resetButton= (Button) findViewById(R.id.reset_button);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent resetIntent = new Intent(getApplicationContext(), SurveyApp.class);
+                Intent resetIntent = new Intent(getApplicationContext(), SurveyActivity.class);
                 startActivity(resetIntent);
-                finish();
                 yes_Counter.setText("Yes Counts:0");
                 no_Counter.setText("No Counts:0");
+                finish();
 
             }
         });
